@@ -1,0 +1,1285 @@
+1. Fibonacci series (solution)
+Write a simple Java program which will print Fibonacci series, e.g. 1 1 2 3 5 8 13 ... . up to a given number. 
+We prepare for cross questions like using iteration over recursion and how to optimize the solution using caching 
+and memoization.
+ :)
+ modeal 1
+ public class Fibonacci {
+
+    public static void main(String[] args) {
+
+        int n = 10, t1 = 0, t2 = 1;
+        System.out.print("First " + n + " terms: ");
+
+        for (int i = 1; i <= n; ++i)
+        {
+            System.out.print(t1 + " + ");
+
+            int sum = t1 + t2;
+            t1 = t2;
+            t2 = sum;
+        }
+    }
+}
+ 
+ Output:-0 + 1 + 1 + 2 + 3 + 5 + 8 + 13 + 21 + 34 +
+ 
+ :)  modeal 2
+ 
+	public class Fibonacci {
+
+    public static void main(String[] args) {
+
+        int i = 1, n = 10, t1 = 0, t2 = 1;
+        System.out.print("First " + n + " terms: ");
+
+        while (i <= n)
+        {
+            System.out.print(t1 + " + ");
+
+            int sum = t1 + t2;
+            t1 = t2;
+            t2 = sum;
+
+            i++;
+        }
+    }
+}
+
+
+	:)	modeal 3
+	
+	public class Fibonacci {
+
+    public static void main(String[] args) {
+
+        int n = 100, t1 = 0, t2 = 1;
+        
+        System.out.print("Upto " + n + ": ");
+        while (t1 <= n)
+        {
+            System.out.print(t1 + " + ");
+
+            int sum = t1 + t2;
+            t1 = t2;
+            t2 = sum;
+        }
+    }
+}
+ 
+
+
+2. A prime number (solution)
+Write a Java program to check if a given number is prime or not. Remember,
+ a prime number is a number which is not divisible by any other number, e.g. 3, 5, 7, 11, 13, 17, etc. 
+ Be prepared for cross, e.g. checking till the square root of a number, etc.
+ 
+ Note:-The number which is only divisible by itself and 1 is known as prime number, 
+		for example 7 is a prime number because it is only divisible by itself and 1.
+ 
+ 
+ :)modeal 1
+ 
+ public class Main {
+
+  public static void main(String[] args) {
+
+    int num = 29;
+    boolean flag = false;
+    for (int i = 2; i <= num / 2; ++i) {
+      // condition for nonprime number
+      if (num % i == 0) {
+        flag = true;
+        break;
+      }
+    }
+na
+    if (!flag)
+      System.out.println(num + " is a prime number.");
+    else
+      System.out.println(num + " is not a prime number.");
+  }
+}
+
+
+:) modeal 2
+	public class Main {
+
+  public static void main(String[] args) {
+
+    int num = 33, i = 2;
+    boolean flag = false;
+    while (i <= num / 2) {
+      // condition for nonprime number
+      if (num % i == 0) {
+        flag = true;
+        break;
+      }
+
+      ++i;
+    }
+
+    if (!flag)
+      System.out.println(num + " is a prime number.");
+    else
+      System.out.println(num + " is not a prime number.");
+  }
+}
+
+
+3. String Palindrome (solution)
+You need to write a simple Java program to check if a given String is palindrome or not. 
+A Palindrome is a String which is equal to the reverse of itself, e.g., "Bob" is a palindrome because of the reverse
+of "Bob" is also "Bob."  Though be prepared with both recursive and iterative solution of this problem. 
+The interviewer may ask you to solve without using any library method, e.g. indexOf() or subString() so be prepared for that.
+ 
+ :) modeal 1
+ 
+		public class Palindrome
+{
+    public static void main(String args[])
+    {
+        String a, b = "";
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter the string you want to check:");
+        a = s.nextLine();
+        int n = a.length();
+        for(int i = n - 1; i >= 0; i--)
+        {
+            b = b + a.charAt(i);
+        }
+        if(a.equalsIgnoreCase(b))
+        {
+            System.out.println("The string is palindrome.");
+        }
+        else
+        {
+            System.out.println("The string is not palindrome.");
+        }
+    }
+}
+
+	:) modeal 2
+	
+		public class Palindrome {
+   public static void main(String[] args) {
+      String str = "SATYA";
+      StringBuffer newStr =new StringBuffer();
+      for(int i = str.length()-1; i >= 0 ; i--) {
+         newStr = newStr.append(str.charAt(i));
+      }
+      if(str.equalsIgnoreCase(newStr.toString())) {
+         System.out.println("String is palindrome");
+      } else {
+         System.out.println("String is not palindrome");
+      }
+   }
+}
+
+		
+		:) modeal 3
+		
+		public class Palindrome {
+		public static void main (String[] args) throws java.lang.Exception {
+      String str = "NITIN";
+      String reverse = new StringBuffer(str).reverse().toString();
+      if (str.equals(reverse))
+      System.out.println("String is palindrome");
+      else
+      System.out.println("String is not palindrome");
+       }
+
+    }
+	
+		:) modeal
+		
+		import java.util.Scanner;
+ 
+	class ChkPalindrome
+	{
+   public static void main(String args[])
+   {
+      String str, rev = "";
+      Scanner sc = new Scanner(System.in);
+ 
+      System.out.println("Enter a string:");
+      str = sc.nextLine();
+ 
+      int length = str.length();
+ 
+      for ( int i = length - 1; i >= 0; i-- )
+         rev = rev + str.charAt(i);
+ 
+      if (str.equals(rev))
+         System.out.println(str+" is a palindrome");
+      else
+         System.out.println(str+" is not a palindrome");
+ 
+		}
+	}
+
+
+ 
+ 
+ 4. Integer Palindrome (solution)
+This is generally asked as follow-up or alternative of the previous program.
+ This time you need to check if given Integer is palindrome or not. An integer is called
+ palindrome if it's equal to its reverse, e.g. 1001 is a palindrome, but 1234 is not because the
+ reverse of 1234 is 4321 which is not equal to 1234. You can use divide by 10 to reduce the number
+ and modulus 10 to get the last digit. This trick is used to solve this problem.
+ 
+ :) modeal 1 
+
+ public class PalindromeProgram {
+ 
+    public static void main(String[] args) {
+ 
+        int rem, rev= 0, temp;
+    int n=121; // user defined number to be checked for palindrome 
+ 
+        temp = n;
+ 
+        // reversed integer is stored in variable 
+        while( n != 0 )
+        {
+            rem= n % 10;
+            rev= rev * 10 + rem;
+            n=n/10;
+        }
+ 
+        // palindrome if orignalInteger(temp) and reversedInteger(rev) are equal
+        if (temp == rev)
+            System.out.println(temp + " is a palindrome.");
+        else
+            System.out.println(temp + " is not a palindrome.");
+    }
+}
+
+		:) modeal 2
+		
+		public class PalindromeProgram {
+  
+    public static void main(String[] args) {
+  
+        int n=1234521, rev=0, rem, temp;
+  
+        temp = n;
+  
+        for( ;n != 0; n /= 10 )
+        {
+            rem = n % 10;
+            rev= rev* 10 + rem;
+        }
+  
+        // palindrome if temp and sum are equal
+        if temp== rev)
+            System.out.println(temp + " is a palindrome.");
+        else
+            System.out.println(temp + " is not a palindrome.");
+    }
+}
+
+
+		:) modeal 3 (Palindrome Program in Java (String) using Library Method)
+		
+		class PalindromeProgram
+{
+public static void checkPalindrome(String s)
+{
+// reverse the given String
+String reverse = new StringBuffer(s).reverse().toString();
+ 
+// checks whether the string is palindrome or not
+if (s.equals(reverse))
+System.out.println("Yes, it is a palindrome");
+ 
+else
+System.out.println("No, it is not a palindrome");
+}
+ 
+public static void main (String[] args)
+throws java.lang.Exception
+{
+checkPalindrome("madam");
+}
+}
+
+
+
+5. Armstrong number (solution)
+A number is called an Armstrong number if it is equal to the cube of its every digit. 
+For example, 153 is an Armstrong number because of 153= 1+ 125+27, which is equal to 1^3+5^3+3^3. 
+You need to write a program to check if the given number is Armstrong number or not.
+
+Note:-  => abcd... = an + bn + cn + dn + ...
+		=>153 = 1*1*1 + 5*5*5 + 3*3*3  // 153 is an Armstrong number.
+		
+		:) modeal 1
+		
+		public class Armstrong {
+
+    public static void main(String[] args) {
+
+        int number = 371, originalNumber, remainder, result = 0;
+
+        originalNumber = number;
+
+        while (originalNumber != 0)
+        {
+            remainder = originalNumber % 10;
+            result += Math.pow(remainder, 3);
+            originalNumber /= 10;
+        }
+
+        if(result == number)
+            System.out.println(number + " is an Armstrong number.");
+        else
+            System.out.println(number + " is not an Armstrong number.");
+    }
+}
+
+		:) modeal 2
+		
+		public class Armstrong {
+
+    public static void main(String[] args) {
+
+        int number = 1634, originalNumber, remainder, result = 0, n = 0;
+
+        originalNumber = number;
+
+        for (;originalNumber != 0; originalNumber /= 10, ++n);
+
+        originalNumber = number;
+
+        for (;originalNumber != 0; originalNumber /= 10)
+        {
+            remainder = originalNumber % 10;
+            result += Math.pow(remainder, n);
+        }
+
+        if(result == number)
+            System.out.println(number + " is an Armstrong number.");
+        else
+            System.out.println(number + " is not an Armstrong number.");
+    }
+}
+
+		:) modeal 3
+		
+		public class JavaExample {
+
+    public static void main(String[] args) {
+
+        int num = 370, number, temp, total = 0;
+
+        number = num;
+        while (number != 0)
+        {
+            temp = number % 10;
+            total = total + temp*temp*temp;
+            number /= 10;
+        }
+
+        if(total == num)
+            System.out.println(num + " is an Armstrong number");
+        else
+            System.out.println(num + " is not an Armstrong number");
+    }
+}
+
+
+6. Avoiding deadlock in Java (solution)
+This is one of the interesting programs from Java Interviews, mostly asked to 2 to 3 years of experienced 
+programmers or higher. The interviewer simply asked you to write code where a resource is accessed by multiple threads.
+You need to write code in such a way that no deadlock should occur. The trick to solving this problem is acquiring resources
+in order and release them in reverse order,  e.g. first acquire resource R1 and only if you have got R1 to go for R2. This way,
+you can avoid deadlock.
+
+
+
+		:) modeal 1 
+		
+			
+			public class Example{
+ public static void main(String[] args){
+   final String r1 = "edureka";
+   final String r2 = "java";
+ 
+   Thread t1 = new Thread() {
+     public void run(){
+       synchronized(r1){
+        System.out.println("Thread 1: Locked r1");
+        try{ Thread.sleep(100);} catch(exception e) {}
+      synchronized(r2){
+        System.out.println("Thread 1: Locked r2");
+        }
+     }
+  }
+};
+ Thread t2 = new Thread() {
+      public void run(){
+       synchronized(r1){
+        System.out.println("Thread 2: Locked r1");
+        try{ Thread.sleep(100);} catch(exception e) {}
+      synchronized(r2){
+       System.out.println("Thread 2: Locked r2");
+      }
+    }
+  }
+};
+ 
+t1.start();
+t2.start();
+}
+}
+
+ :) modeal 2 
+ //Java program to create a deadlock by imposing circular wait.
+
+ 
+ public class DeadLockDemo {
+ /*  This method request two locks, first String and then Integer
+ */
+ 
+ public void method1() { 
+ synchronized (String.class) { 
+ System.out.println("Aquired lock on String.class object"); 
+ synchronized (Integer.class) { 
+ System.out.println("Aquired lock on Integer.class object"); 
+ }
+ } 
+ }
+ /* This method also requests same two lock but in exactly * 
+   *Opposite order i.e. first Integer and then String.
+ * This creates potential deadlock, if one thread holds String lock
+ * and other holds Integer lock and they wait for each other, forever.
+ */ 
+ 
+ public void method2() {
+ synchronized (Integer.class) {
+ System.out.println("Aquired lock on Integer.class object"); 
+ synchronized (String.class) {
+ System.out.println("Aquired lock on String.class object"); 
+ } 
+ } 
+ }
+ }
+
+
+			
+	:) modeal 3 
+
+		public class DeadLockFixed {
+		/** * Both method are now requesting lock in same order,
+		* first Integer and then String.
+		* You could have also done reverse e.g. first String and then Integer,
+		* both will solve the problem, as long as both method are requesting lock
+		* in consistent order.
+		*/
+		public void method1() { 
+		synchronized (Integer.class) {
+		System.out.println("Aquired lock on Integer.class object");
+		synchronized (String.class) {
+		System.out.println("Aquired lock on String.class object"); 
+		} 
+		} 
+		}
+		public void method2() {
+		synchronized (Integer.class) {
+		System.out.println("Aquired lock on Integer.class object"); 
+		synchronized (String.class) {
+		System.out.println("Aquired lock on String.class object");
+		} 
+		} 
+		}
+		}
+
+
+			
+			
+7. Factorial (solution)
+This is one of the simplest programs you can expect in interviews. It is generally asked to see if you can code or not.
+ Sometimes interviewer may also ask about changing a recursive solution to iterative one or vice-versa.
+ 
+ Note :-  factorial of n (n!) = 1 * 2 * 3 * 4 * ... * n
+ 
+  :) modeal 1
+  
+  public class Factorial {
+
+    public static void main(String[] args) {
+
+        int num = 10;
+        long factorial = 1;
+        for(int i = 1; i <= num; ++i)
+        {
+            // factorial = factorial * i;
+            factorial *= i;
+        }
+        System.out.printf("Factorial of %d = %d", num, factorial);
+    }
+}
+  
+  
+  :) modeal 2
+  
+  import java.math.BigInteger;
+
+public class Factorial {
+
+    public static void main(String[] args) {
+
+        int num = 30;
+        BigInteger factorial = BigInteger.ONE;
+        for(int i = 1; i <= num; ++i)
+        {
+            // factorial = factorial * i;
+            factorial = factorial.multiply(BigInteger.valueOf(i));
+        }
+        System.out.printf("Factorial of %d = %d", num, factorial);
+    }
+}
+  
+  
+  :) modeal 3
+  
+  
+  public class Factorial {
+
+    public static void main(String[] args) {
+
+        int num = 5, i = 1;
+        long factorial = 1;
+        while(i <= num)
+        {
+            factorial *= i;
+            i++;
+        }
+        System.out.printf("Factorial of %d = %d", num, factorial);
+    }
+}
+
+  
+
+8. Reverse a String (solution)
+This problem is similar to the String Palindrome problem we have discussed above. If you can solve that problem, 
+you can solve this as well. You can use indexOf() or substring() to reverse a String or alternatively, convert the
+ problem to reverse an array by operating on character array instead of String. If you want to brush up your data structure
+ skill you can also check Data Structures and Algorithms: Deep Dive Using Java course on Udemy before solving this question.
+
+
+		:)modeal 1
+		
+	public class TestStringFormatter {  
+
+	public static void main(String[] args) {  
+    System.out.println(StringFormatter.reverseString("my name is khan"));  
+    System.out.println(StringFormatter.reverseString("I am sonoo jaiswal"));      
+    }  
+	}  
+
+		:) modeal 2
+		
+		public class StringReverseExample{
+   public static void main(String[] args) {
+      String string = "abcdef";
+      String reverse = new StringBuffer(string).reverse().toString();
+      System.out.println("\nString before reverse: "+string);
+      System.out.println("String after reverse: "+reverse);
+   }
+}
+		
+		
+		:) modeal 3
+		
+		
+		
+		import java.io.*;
+	import java.util.*;
+
+	public class HelloWorld {
+   public static void main(String[] args) {
+      String input = "tutorialspoint";
+      char[] try1 = input.toCharArray();
+      for (int i = try1.length-1;i >= 0; i--) System.out.print(try1[i]);
+   }
+	}
+		
+
+9. Remove duplicates from an array (solution)
+Write a program to remove duplicates from an array in Java without using the Java Collection API. 
+The array can be an array of String, Integer or Character, your solution should be independent of the type of array. 
+If you want to practice more array-based questions, then see this list of top 30 array interview questions from Java interviews.
+
+	:) modeal 1
+	
+		public class Main{
+public static int removeDuplicates(int array[], int n){
+if(n==0 || n==1){
+return n;
+}
+int[] temp = new int[n];
+int j = 0;
+for(int i=0; i<n-1; i++){
+if(array[i] != array[i+1]){
+temp[j++] = array[i];
+}
+}
+temp[j++] = array[n-1];
+//Changing the original array
+for(int i=0; i<j; i++){
+array[i] = temp[i];
+}
+return j;
+}
+public static void main (String[] args) {
+int array[] = {18,18,25,25,25,28,28,29};
+int length = array.length;
+length = removeDuplicates(array, length);
+//Printing The array elements
+for(int i=0; i<length; i++)
+System.out.print(array[i]+" ");
+ 
+}
+ 
+}
+
+		
+	
+	:) modeal 2
+	
+	public class Main{
+public static int removeDuplicates(int array[], int n){
+if(n==0 || n==1){
+return n;
+}
+int j = 0;//for next element
+for (int i=0; i < n-1; i++){
+if (array[i] != array[i+1]){
+array[j++] = array[i];
+}
+}
+array[j++] = array[n-1];
+return j;
+}
+public static void main (String[] args) {
+int array[] = {18,18,25,25,25,28,28,29};
+int length = array.length;
+length = removeDuplicates(array, length);
+//printing array elements
+for(int i=0; i<length; i++)
+System.out.print(array[i]+" ");
+}
+}
+	
+	:) modeal 3
+	
+	import java.util.Arrays;
+public class Main{
+public static int removeDuplicates(int array[], int n){
+if(n==0 || n==1){
+return n;
+}
+int[] temp = new int[n];
+int j = 0;
+for (int i=0; i<n-1; i++){
+if(array[i] != array[i+1]){
+temp[j++] = array[i];
+}
+}
+temp[j++] = array[n-1];
+//Changing original array
+for(int i=0; i<j; i++){
+array[i] = temp[i];
+}
+return j;
+}
+public static void main (String[] args) {
+int array[] = {25,28,18,29,25,18,29,28,25,18};//unsorted array
+Arrays.sort(array);//sorting array
+int length = array.length;
+length = removeDuplicates(array, length);
+//printing array elements
+for(int i=0; i<length; i++)
+System.out.print(array[i]+" ");
+}
+}
+	
+
+
+
+10. Printing patterns (solutions)
+
+:) modeal 1
+
+public class Edureka
+{  
+    public static void pyramidPattern(int n) 
+    {  
+        for (int i=0; i<n; i++) //outer loop for number of rows(n) { for (int j=n-i; j>1; j--) //inner loop for spaces
+            { 
+                System.out.print(" "); //print space
+            }  
+            for (int j=0; j<=i; j++ ) //inner loop for number of columns
+            { 
+                System.out.print("* "); //print star
+            } 
+  
+            System.out.println(); //ending line after each row
+        } 
+    } 
+  
+    public static void main(String args[]) //driver function
+    { 
+        int n = 5; 
+        pyramidPattern(n); 
+    } 
+}
+ output:-
+    * 
+   * * 
+  * * * 
+ * * * * 
+* * * * *
+
+
+
+:) modeal 2
+
+
+public class Edureka 
+{ 
+    public static void rightTriangle(int n) 
+    { 
+        int i, j;  
+        for(i=0; i<n; i++) //outer loop for number of rows(n) { for(j=2*(n-i); j>=0; j--) // inner loop for spaces 
+            {           
+                System.out.print(" "); // printing space
+            } 
+            for(j=0; j<=i; j++) //  inner loop for columns
+            {       
+                System.out.print("* "); // print star
+            }           
+            System.out.println(); // ending line after each row
+        } 
+    } 
+    public static void main(String args[]) 
+    { 
+        int n = 5; 
+        rightTriangle(n); 
+    } 
+}
+
+output :-
+*
+* *
+* * *
+* * * *
+* * * * *
+
+
+:) modeal 3
+
+public class Edureka 
+{ 
+    public static void printStars(int n) 
+    { 
+        int i, j;  
+        for(i=0; i<n; i++) //outer loop for number of rows(n) { for(j=2*(n-i); j>=0; j--) // inner loop for spaces 
+            {           
+                System.out.print(" "); // printing space
+            } 
+            for(j=0; j<=i; j++) //  inner loop for columns
+            {       
+                System.out.print("* "); // print star
+            }           
+            System.out.println(); // ending line after each row
+        } 
+    } 
+    public static void main(String args[]) 
+    { 
+        int n = 5; 
+        printStars(n); 
+    } 
+}
+
+outer:-
+		   * 
+         * * 
+       * * * 
+     * * * * 
+   * * * * * 
+
+:) modeal 4
+
+import java.util.Scanner;
+public class Edureka
+{
+    public static void main(String[] args)
+    {
+    Scanner sc = new Scanner(System.in);
+ 
+    System.out.println("Enter the number of rows: "); //takes input from user
+ 
+    int rows = sc.nextInt();
+ 
+    for (int i= rows-1; i>=0 ; i--)
+    {
+    for (int j=0; j<=i; j++)
+    {
+    System.out.print("*" + " ");
+    }
+    System.out.println();
+    }
+    sc.close();
+    }
+    }
+	
+	output:- 
+ * * * * * 
+  * * * * 
+   * * * 
+    * * 
+     * 
+
+
+:) modeal 5
+
+import java.util.Scanner;
+public class Edureka
+{
+ 
+    public static void main(String[] args)
+    {
+    Scanner sc = new Scanner(System.in); // takes input
+    System.out.println("Enter number of rows: ");
+    int rows = sc.nextInt();
+    for (int i= rows; i>= 1; i--)
+    {
+    for (int j=rows; j>i;j--)
+    {
+    System.out.print(" ");
+    }
+    for (int k=1;k<=i;k++)
+    {
+    System.out.print("*");
+    }
+    System.out.println("");
+    }
+    sc.close();
+    }
+    }
+ 
+ output :-
+ 
+*****
+ ****
+  ***
+   **
+    *
+
+
+
+
+
+
+
+
+
+11. Print repeated characters of String? (solution)
+
+ :) modeal 1
+ 
+ public class Example {
+   public static void main(String argu[]) {
+      String str = "beautiful beach";
+      char[] carray = str.toCharArray();
+      System.out.println("The string is:" + str);
+      System.out.print("Duplicate Characters in above string are: ");
+      for (int i = 0; i < str.length(); i++) {
+         for (int j = i + 1; j < str.length(); j++) {
+            if (carray[i] == carray[j]) {
+               System.out.print(carray[j] + " ");
+               break;
+            }
+         }
+      }
+   }
+}
+ 
+ 
+
+12. GCD of two numbers (solution)
+
+Note:)=Greatest Common Divisor: It is the highest number that completely divides two or more numbers.
+ It is abbreviated for GCD. It is also known as the Greatest Common Factor (GCF) and the Highest Common Factor (HCF).
+ It is used to simplify the fractions.
+ 
+ 
+ note:)  FActors of Number 30:2x3x5
+		 FActors of number 250:2x5x5x5
+		 GCD of 30 and 250 = mulitiply common factors
+		                   = 2x5
+						   = 10
+ 
+ 
+ 
+ :) modeal 1
+ 
+	class Main {
+  public static void main(String[] args) {
+
+    // find GCD between n1 and n2
+    int n1 = 81, n2 = 153;
+    
+    // initially set to gcd
+    int gcd = 1;
+
+    for (int i = 1; i <= n1 && i <= n2; ++i) {
+
+      // check if i perfectly divides both n1 and n2
+      if (n1 % i == 0 && n2 % i == 0)
+        gcd = i;
+    }
+
+    System.out.println("GCD of " + n1 +" and " + n2 + " is " + gcd);
+  }
+}
+ 
+ :) modeal 2
+ 
+ class Main {
+  public static void main(String[] args) {
+
+    // find GCD between n1 and n2
+    int n1 = 81, n2 = 153;
+    
+    while(n1 != n2) {
+    
+      if(n1 > n2) {
+        n1 -= n2;
+      }
+      
+      else {
+        n2 -= n1;
+      }
+    }
+
+    System.out.println("GCD: " + n1);
+  }
+}
+ 
+ :) modeal 3
+ 
+ class GCD {
+  public static void main(String[] args) {
+
+    int n1 = 81, n2 = -153;
+
+    // Always set to positive
+    n1 = ( n1 > 0) ? n1 : -n1;
+    n2 = ( n2 > 0) ? n2 : -n2;
+
+    while(n1 != n2) {
+        
+      if(n1 > n2) {
+        n1 -= n2;
+      }
+      
+      else {
+        n2 -= n1;
+      }
+    }
+    
+    System.out.println("GCD: " + n1);
+  }
+}
+
+
+13. The square root of a number (solution)
+You need to write a program to calculate the square root of a number without using the Math.sqrt() function of JDK. 
+You need to write your logic and method to calculate the square root. You can though use the popular algorithm,
+
+ like Newton's method.
+
+14. Reverse array in place (solution)
+
+:) modeal 1
+
+
+	import java.util.*;
+import java.util.stream.*;
+public class Main
+{
+    public static void main(String[] args) {
+    Integer[] intArray = {10,20,30,40,50,60,70,80,90};
+     
+  //print array starting from first element
+    System.out.println("Original Array:");
+    for(int i=0;i<intArray.length;i++)
+         System.out.print(intArray[i] + "  ");
+     
+    System.out.println();
+     
+    //print array starting from last element
+    System.out.println("Original Array printed in reverse order:");
+         for(int i=intArray.length-1;i>=0;i--)
+         System.out.print(intArray[i] + "  ");
+    }
+}
+
+:) modeal 2
+		
+		The following program reverses an array using the ‘reverse’ method.
+
+   import java.util.*; 
+ 
+   public class Main { 
+ 
+    /*function reverses the elements of the array*/
+    static void reverse(Integer myArray[]) 
+    { 
+        Collections.reverse(Arrays.asList(myArray)); 
+        System.out.println("Reversed Array:" + Arrays.asList(myArray)); 
+    } 
+ 
+     public static void main(String[] args) 
+    { 
+        Integer [] myArray = {1,3,5,7,9}; 
+        System.out.println("Original Array:" + Arrays.asList(myArray));
+        reverse(myArray); 
+    } 
+
+:)modeal 3 
+     
+	 
+	 
+	 import java.util.*;
+ 
+public class Main {
+ 
+    /*function reverses the elements of the array*/
+    static void reverse(String myArray[])
+    {
+        Collections.reverse(Arrays.asList(myArray));
+        System.out.println("Reversed Array:" + Arrays.asList(myArray));
+    }
+ 
+     public static void main(String[] args)
+    {
+        String [] myArray = {"one", "Two", "Three", "Four", "Five", "Six","Seven"};
+        System.out.println("Original Array:" + Arrays.asList(myArray));
+        reverse(myArray);
+    }
+}
+
+
+15. Reverse words of a sentence (solution)
+
+:) modeal 1
+
+		import java.util.*;
+		public class Exercise61 {
+     public static void main(String[] args){	
+     Scanner in = new Scanner(System.in);
+     System.out.print("\nInput a word: ");
+	 String word = in.nextLine();
+	 word = word.trim();
+	 String result = ""; 
+     char[] ch=word.toCharArray();  
+	 for (int i = ch.length - 1; i >= 0; i--) {
+			 result += ch[i];
+		 }
+	 System.out.println("Reverse word: "+result.trim()); 
+	 }			
+}
+
+
+:) modeal 2 
+
+// Java Program to reverse a String
+// without using inbuilt String function
+import java.util.regex.Pattern;
+public class Exp {
+  
+    // Method to reverse words of a String
+    static String reverseWords(String str)
+    {
+  
+        // Specifying the pattern to be searched
+        Pattern pattern = Pattern.compile("\\s");
+  
+        // splitting String str with a pattern
+        // (i.e )splitting the string whenever their
+        //  is whitespace and store in temp array.
+        String[] temp = pattern.split(str);
+        String result = "";
+  
+        // Iterate over the temp array and store
+        // the string in reverse order.
+        for (int i = 0; i < temp.length; i++) {
+            if (i == temp.length - 1)
+                result = temp[i] + result;
+            else
+                result = " " + temp[i] + result;
+        }
+        return result;
+    }
+  
+    // Driver methods to test above method
+    public static void main(String[] args)
+    {
+        String s1 = "Welcome to geeksforgeeks";
+        System.out.println(reverseWords(s1));
+  
+        String s2 = "I love Java Programming";
+        System.out.println(reverseWords(s2));
+    }
+}
+
+ 
+ :) modeal 3
+ 
+  public class TestStringFormatter {  
+  public static void main(String[] args) {  
+    System.out.println(StringFormatter.reverseWord("my name is khan"));  
+    System.out.println(StringFormatter.reverseWord("I am sonoo jaiswal"));    
+    }  
+   }  
+   
+   
+
+16. Leap year (solution)
+
+:) modeal 1
+
+			import java.util.Scanner;
+public class LeapYear {
+   public static void main(String[] args){
+      int year;
+      System.out.println("Enter an Year :: ");
+      Scanner sc = new Scanner(System.in);
+      year = sc.nextInt();
+
+      if (((year % 4 == 0) && (year % 100!= 0)) || (year%400 == 0))
+         System.out.println("Specified year is a leap year");
+      else
+         System.out.println("Specified year is not a leap year");
+   }
+}
+
+
+:) modeal 2
+
+		import java.util.Scanner;
+public class Demo {
+
+    public static void main(String[] args) {
+
+    	int year;
+    	Scanner scan = new Scanner(System.in);
+    	System.out.println("Enter any Year:");
+    	year = scan.nextInt();
+    	scan.close();
+        boolean isLeap = false;
+
+        if(year % 4 == 0)
+        {
+            if( year % 100 == 0)
+            {
+                if ( year % 400 == 0)
+                    isLeap = true;
+                else
+                    isLeap = false;
+            }
+            else
+                isLeap = true;
+        }
+        else {
+            isLeap = false;
+        }
+
+        if(isLeap==true)
+            System.out.println(year + " is a Leap Year.");
+        else
+            System.out.println(year + " is not a Leap Year.");
+    }
+}
+
+
+17. Binary search (solution)
+
+:) modeal 1
+
+
+	import java.util.Arrays;  
+class BinarySearchExample2{  
+    public static void main(String args[]){  
+        int arr[] = {10,20,30,40,50};  
+        int key = 30;  
+        int result = Arrays.binarySearch(arr,key);  
+        if (result < 0)  
+            System.out.println("Element is not found!");  
+        else  
+            System.out.println("Element is found at index: "+result);  
+    }  
+}  
+
+
+:) modeal 2
+class BinarySearchExample1{  
+    public static int binarySearch(int arr[], int first, int last, int key){  
+        if (last>=first){  
+            int mid = first + (last - first)/2;  
+            if (arr[mid] == key){  
+            return mid;  
+            }  
+            if (arr[mid] > key){  
+            return binarySearch(arr, first, mid-1, key);//search in left subarray  
+            }else{  
+            return binarySearch(arr, mid+1, last, key);//search in right subarray  
+            }  
+        }  
+        return -1;  
+    }  
+    public static void main(String args[]){  
+        int arr[] = {10,20,30,40,50};  
+        int key = 30;  
+        int last=arr.length-1;  
+        int result = binarySearch(arr,0,last,key);  
+        if (result == -1)  
+            System.out.println("Element is not found!");  
+        else  
+            System.out.println("Element is found at index: "+result);  
+    }  
+}  
+
+
+:)modeal 3
+		
+			class BinarySearchExample{  
+ public static void binarySearch(int arr[], int first, int last, int key){  
+   int mid = (first + last)/2;  
+   while( first <= last ){  
+      if ( arr[mid] < key ){  
+        first = mid + 1;     
+      }else if ( arr[mid] == key ){  
+        System.out.println("Element is found at index: " + mid);  
+        break;  
+      }else{  
+         last = mid - 1;  
+      }  
+      mid = (first + last)/2;  
+   }  
+   if ( first > last ){  
+      System.out.println("Element is not found!");  
+   }  
+ }  
+ public static void main(String args[]){  
+        int arr[] = {10,20,30,40,50};  
+        int key = 30;  
+        int last=arr.length-1;  
+        binarySearch(arr,0,last,key);     
+ }  
+}  
